@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HargaNaik.ID - Platform Prediksi Harga Bahan Pokok</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="run.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/api/placeholder/40/40" alt="HargaNaik.ID Logo">
+                <h1>HargaNaik.ID</h1>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Beranda</a></li>
+                    <li class="nav-item"><a href="#features" class="nav-link">Fitur</a></li>
+                    <li class="nav-item"><a href="#problems" class="nav-link">Masalah</a></li>
+                    <li class="nav-item"><a href="#solutions" class="nav-link">Solusi</a></li>
+                    <li class="nav-item"><a href="#app" class="nav-link">Aplikasi</a></li>
+                    <li class="nav-item"><a href="#team" class="nav-link">Tim</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">HargaNaik.ID</h1>
+                <p class="hero-subtitle">Platform Prediksi Cerdas Harga Bahan Pokok Berbasis AI untuk Warga dan UMKM</p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-accent btn-lg">Pelajari Lebih Lanjut</a>
+                    <a href="#app" class="btn btn-primary btn-lg">Lihat Aplikasi</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,0 C240,95 480,100 720,85 C960,70 1200,20 1440,0 L1440,100 L0,100 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Marketing Strategy Section -->
+    <section class="section" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Strategi</span>
+                <h2 class="section-title">Strategi Pemasaran</h2>
+                <p class="section-description">Pendekatan multi-channel untuk menjangkau target pengguna dan membangun kesadaran merek yang kuat.</p>
+            </div>
+            <div class="features">
+                <div class="feature" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Penetrasi Pasar Lokal</h3>
+                        <p class="feature-description">Kemitraan dengan 8 pasar tradisional di Makassar dan program ambassador ibu-ibu PKK untuk memperkenalkan platform ke target pengguna.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Kampanye "Cabe Naik, Emak Panik!"</h3>
+                        <p class="feature-description">Konten viral di media sosial dan edukasi tentang manfaat prediksi harga untuk menghemat anggaran belanja rumah tangga dan bisnis.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Workshop & Webinar</h3>
+                        <p class="feature-description">Sesi edukasi tentang perencanaan belanja cerdas di kelompok PKK dan komunitas ibu rumah tangga serta pelaku UMKM di seluruh kota.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Kolaborasi Institusional</h3>
+                        <p class="feature-description">Kerjasama dengan Dinas Perdagangan dan asosiasi pedagang untuk mendapatkan data yang akurat dan memperluas jangkauan platform.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage Section -->
+    <section class="section" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Diferensiasi</span>
+                <h2 class="section-title">Keunggulan Kompetitif</h2>
+                <p class="section-description">Faktor pembeda yang menjadikan HargaNaik.ID solusi unggul dibandingkan alternatif yang ada di pasar.</p>
+            </div>
+            <table class="bcm-table" style="margin-top: 0;" data-aos="fade-up">
+                <tr>
+                    <th style="width: 50px;">No</th>
+                    <th>Keunggulan</th>
+                    <th>Penjelasan</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Prediksi Harga Otomatis</strong></td>
+                    <td>Menggunakan AI dan machine learning untuk memprediksi kenaikan/penurunan harga bahan pokok secara harian dengan akurasi hingga 85%.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Fokus Pasar Lokal (Makassar)</strong></td>
+                    <td>Menyediakan data harga dari pasar tradisional Makassar, bukan hanya data nasional umum yang kurang relevan dengan kondisi lokal.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Notifikasi Belanja Cerdas</strong></td>
+                    <td>Memberikan alert otomatis saat harga diprediksi naik, sehingga pengguna bisa belanja tepat waktu dan menghemat hingga 15% anggaran.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Akses via WhatsApp Bot</strong></td>
+                    <td>Bisa digunakan tanpa aplikasi berat—cukup via chat WhatsApp, cocok untuk segala kalangan termasuk yang kurang familiar dengan teknologi.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Dashboard UMKM & HPP</strong></td>
+                    <td>Menyediakan alat bantu bagi pelaku usaha menghitung Harga Pokok Produksi (HPP) berbasis data dengan visualisasi interaktif.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Saran Produk Alternatif</strong></td>
+                    <td>Memberikan rekomendasi pengganti bahan pokok saat harga melonjak tinggi berdasarkan profil dan preferensi pengguna.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Desain Ramah Pengguna</strong></td>
+                    <td>Tampilan simpel, ringan, dan mudah digunakan oleh semua kalangan dengan pengalaman pengguna yang intuitif dan responsif.</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2 class="cta-title">Siap Memprediksi Kenaikan Harga?</h2>
+                <p class="cta-description">Daftarkan diri Anda sekarang dan jadilah pengguna pertama yang mendapatkan akses ke teknologi prediksi harga bahan pokok berbasis data science.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-accent btn-lg">Daftar Sekarang</a>
+                    <a href="#features" class="btn btn-outline btn-lg">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+    <!-- Introduction Section -->
+    <section class="section" id="introduction">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Tentang Kami</span>
+                <h2 class="section-title">Pendahuluan</h2>
+                <p class="section-description">Solusi digital untuk mengatasi ketidakpastian harga bahan pokok yang mempengaruhi pengeluaran rumah tangga dan usaha kecil.</p>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col">
+                    <p>HargaNaik.ID adalah platform berbasis data science dan AI yang membantu warga, pedagang, dan UMKM memantau dan mengantisipasi kenaikan harga bahan pokok, seperti cabai, beras, minyak, dan telur.</p>
+                    <p>Menggabungkan data pasar, distribusi logistik, cuaca ekstrem, serta tren sosial media, platform ini memberikan notifikasi harian dan analisis visual harga agar pengguna dapat mengambil keputusan belanja atau stok yang lebih cerdas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Yang Kami Tawarkan</span>
+                <h2 class="section-title">Fitur Utama</h2>
+                <p class="section-description">HargaNaik.ID menghadirkan inovasi teknologi untuk membantu Anda menghemat pengeluaran belanja dan mengoptimalkan keputusan bisnis.</p>
+            </div>
+            <div class="features">
+                <div class="feature" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Sistem Prediksi Cerdas</h3>
+                        <p class="feature-description">Algoritma AI menganalisis pola historis kenaikan harga dan memberikan prediksi jangka pendek dan menengah dengan akurasi tinggi hingga 85%.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Dashboard Harga Real-time</h3>
+                        <p class="feature-description">Tampilan tren harga harian untuk 15+ komoditas utama dengan indikator visual yang memudahkan pemantauan dan analisa.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Notifikasi "Beli Sekarang"</h3>
+                        <p class="feature-description">Alert personalisasi berdasarkan preferensi belanja pengguna dan memberikan saran waktu terbaik untuk melakukan pembelian.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Saran Produk Alternatif</h3>
+                        <p class="feature-description">Memberikan rekomendasi pengganti bahan pokok saat harga melonjak tinggi untuk membantu manajemen anggaran belanja.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Akses via WhatsApp Bot</h3>
+                        <p class="feature-description">Bisa digunakan tanpa aplikasi berat—cukup via chat WhatsApp, cocok untuk semua kalangan pengguna dan berbagai perangkat.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Platform Komunitas</h3>
+                        <p class="feature-description">Forum berbagi informasi harga dan strategi belanja hemat, dilengkapi sistem laporan harga dari sesama pengguna.</p>
+                        <a href="#" class="feature-link">Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="section problems" id="problems">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Tantangan</span>
+                <h2 class="section-title">Masalah yang Dihadapi Pasar</h2>
+                <p class="section-description">Berbagai kendala yang dihadapi konsumen dan pelaku UMKM akibat fluktuasi harga bahan pokok.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card" data-aos="fade-up">
+                    <div class="problem-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="problem-title">Tidak tahu kapan harga naik</h3>
+                    <p class="problem-description">Konsumen tidak memiliki cara untuk memprediksi kapan akan terjadi lonjakan harga bahan pokok, sehingga belanja menjadi boros dan tidak efisien.</p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="problem-title">Harga tidak stabil</h3>
+                    <p class="problem-description">Faktor cuaca, pasokan, dan musim menyebabkan fluktuasi harga yang sulit diprediksi, membuat perencanaan belanja menjadi tantangan.</p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="problem-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="problem-title">UMKM kuliner kesulitan hitung HPP</h3>
+                    <p class="problem-description">Pelaku usaha kuliner sulit menentukan Harga Pokok Produksi yang konsisten karena fluktuasi harga bahan baku, berdampak pada margin usaha.</p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="problem-icon">
+                        <i class="fas fa-store-alt"></i>
+                    </div>
+                    <h3 class="problem-title">Data harga hanya tersedia offline</h3>
+                    <p class="problem-description">Untuk mendapatkan informasi harga terkini, konsumen harus mengunjungi pasar secara fisik, membuat keputusan belanja menjadi lambat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section solutions" id="solutions">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Inovasi Kami</span>
+                <h2 class="section-title">Solusi yang Ditawarkan</h2>
+                <p class="section-description">HargaNaik.ID menghadirkan teknologi inovatif untuk mengantisipasi dan mengelola fluktuasi harga bahan pokok.</p>
+            </div>
+            
+            <div class="solution-card" data-aos="fade-up">
+                <div class="solution-image" style="background-image: url('/api/placeholder/600/600');"></div>
+                <div class="solution-content">
+                    <span class="solution-tag">Teknologi AI</span>
+                    <h3 class="solution-title">Sistem Prediksi Cerdas</h3>
+                    <h4 class="solution-subtitle">Algoritma AI untuk Analisis Pola Harga</h4>
+                    <p class="solution-description">HargaNaik.ID menggabungkan teknologi AI dengan pengumpulan data komprehensif untuk memprediksi pergerakan harga bahan pokok dengan akurasi tinggi, membantu pengguna mengantisipasi kenaikan harga.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Analisis pola historis kenaikan harga berdasarkan data 5 tahun terakhir</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Prediksi jangka pendek (harian) dan menengah (mingguan) dengan akurasi tinggi</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Integrasi data cuaca, logistik, dan tren pasar untuk analisis komprehensif</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Akurasi prediksi hingga 85% telah divalidasi dalam pengujian pasar</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="solution-image" style="background-image: url('/api/placeholder/600/600');"></div>
+                <div class="solution-content">
+                    <span class="solution-tag">Visualisasi Data</span>
+                    <h3 class="solution-title">Dashboard Harga Real-time</h3>
+                    <h4 class="solution-subtitle">Monitoring Tren Harga Secara Visual</h4>
+                    <p class="solution-description">Dashboard interaktif yang menyajikan tren harga dalam format visual yang mudah dipahami, memungkinkan pengguna melihat fluktuasi harga dalam satu tampilan dan membuat keputusan belanja yang lebih baik.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Tren harga 15+ komoditas utama dengan grafik interaktif dan fitur perbandingan</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Indikator warna untuk kemudahan pemantauan (merah: naik, hijau: turun, kuning: stabil)</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Pembaruan data harian dari 8 pasar utama di seluruh kota Makassar</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Visualisasi grafik interaktif dengan fitur zoom dan perbandingan harga antar pasar</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="solution-image" style="background-image: url('/api/placeholder/600/600');"></div>
+                <div class="solution-content">
+                    <span class="solution-tag">Smart Alert</span>
+                    <h3 class="solution-title">Notifikasi "Beli Sekarang"</h3>
+                    <h4 class="solution-subtitle">Alert Kenaikan Harga Personal</h4>
+                    <p class="solution-description">Sistem notifikasi cerdas yang memberitahu pengguna saat harga diprediksi akan naik, memungkinkan pengguna mengambil tindakan preventif dengan belanja di waktu yang tepat untuk menghemat biaya.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Alert personalisasi sesuai preferensi belanja dan kebutuhan spesifik pengguna</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Rekomendasi waktu belanja optimal dengan perkiraan penghematan potensial</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Pemberitahuan via aplikasi, WhatsApp, dan email untuk kemudahan akses</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Fitur pengingat dan reminder untuk perencanaan belanja jangka panjang</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="section screenshots" id="app">
+        <div class="container screenshots-content">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">UI/UX Design</span>
+                <h2 class="section-title">Mockup Aplikasi UI/UX</h2>
+                <p class="section-description">HargaNaik.ID menghadirkan antarmuka modern yang menggabungkan fungsionalitas prediksi harga dengan pengalaman pengguna yang sederhana dan intuitif.</p>
+            </div>
+            
+            <div class="screenshots-gallery">
+                <div class="screenshot" data-aos="fade-up">
+                    <img src="/api/placeholder/400/700" alt="Login Screen">
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/api/placeholder/400/700" alt="Dashboard Screen">
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/api/placeholder/400/700" alt="Prediction Screen">
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot" data-aos="fade-up" data-aos-delay="300">
+                    <img src="/api/placeholder/400/700" alt="Community Screen">
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="btn btn-primary">Lihat Lebih Banyak Screenshot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section" id="use-cases" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Implementasi</span>
+                <h2 class="section-title">Studi Kasus</h2>
+                <p class="section-description">Kisah nyata bagaimana HargaNaik.ID membantu pengguna menghemat dan mengoptimalkan belanja mereka.</p>
+            </div>
+            
+            <div class="solution-card" data-aos="fade-up">
+                <div class="solution-image" style="background-image: url('/api/placeholder/600/600');"></div>
+                <div class="solution-content">
+                    <span class="solution-tag">Success Story</span>
+                    <h3 class="solution-title">Ibu Rumah Tangga - Ratna</h3>
+                    <p class="solution-description">Ratna adalah ibu rumah tangga dengan 2 anak yang mengelola belanja keluarga mingguan. Dengan anggaran terbatas, ia sering frustrasi karena harga cabai dan bawang yang tiba-tiba naik.</p>
+                    <h4 style="margin-top: 1.5rem; color: var(--primary); font-size: 1.1rem;">Masalah:</h4>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Tidak ada cara mengetahui kapan lonjakan harga akan terjadi</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Sering terpaksa membeli dengan harga tinggi karena kebutuhan mendesak</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Anggaran belanja bulanan sering terlampaui hingga 20%</span>
+                        </li>
+                    </ul>
+                    <h4 style="margin-top: 1.5rem; color: var(--secondary); font-size: 1.1rem;">Solusi dengan HargaNaik.ID:</h4>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Menerima notifikasi "Beli Sekarang" 2 hari sebelum kenaikan harga cabai</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Dapat membeli cabai dengan harga Rp45.000 sebelum naik menjadi Rp65.000</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Total penghematan mencapai Rp150.000 per bulan, setara dengan 15% anggaran belanja</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="solution-image" style="background-image: url('/api/placeholder/600/600');"></div>
+                <div class="solution-content">
+                    <span class="solution-tag">Success Story</span>
+                    <h3 class="solution-title">Warung Makan - Daeng Baso</h3>
+                    <p class="solution-description">Daeng Baso memiliki warung makan kecil yang menjual soto, bakso, dan nasi campur. Dengan margin keuntungan tipis, kenaikan harga bahan baku sering memaksa dia untuk menaikkan harga menu.</p>
+                    <h4 style="margin-top: 1.5rem; color: var(--primary); font-size: 1.1rem;">Masalah:</h4>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Sulit menjaga stabilitas harga menu karena fluktuasi bahan baku</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Keterbatasan modal untuk menyimpan stok dalam jumlah besar</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-times-circle" style="color: var(--danger);"></i>
+                            <span class="solution-feature-text">Pelanggan sensitif terhadap perubahan harga yang sering terjadi</span>
+                        </li>
+                    </ul>
+                    <h4 style="margin-top: 1.5rem; color: var(--secondary); font-size: 1.1rem;">Solusi dengan HargaNaik.ID:</h4>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Berlangganan paket B2B untuk prediksi lengkap dan dashboard HPP khusus</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Dapat menambah stok sebelum kenaikan harga dan mengoptimalkan pembelian</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">Mampu mempertahankan harga menu saat kompetitor menaikkan harga</span>
+                        </li>
+                        <li class="solution-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="solution-feature-text">ROI mencapai 500% dalam bulan pertama dengan peningkatan pelanggan 20%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section class="section business-model" id="business-model">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Monetisasi</span>
+                <h2 class="section-title">Model Bisnis</h2>
+                <p class="section-description">Strategi monetisasi yang memastikan keberlanjutan platform sambil memberikan nilai maksimal kepada pengguna.</p>
+            </div>
+            
+            <div class="pricing-tables">
+                <div class="pricing-table" data-aos="fade-up">
+                    <div class="pricing-table-header">
+                        <h3 class="pricing-table-title">Freemium</h3>
+                        <div class="pricing-table-price">Gratis</div>
+                        <p class="pricing-table-description">Untuk pengguna personal</p>
+                    </div>
+                    <ul class="pricing-table-features">
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Dashboard dasar harga harian</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Prediksi 5 komoditas utama</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Notifikasi terbatas (3/minggu)</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Akses forum komunitas dasar</li>
+                        <li class="pricing-table-feature"><i class="fas fa-times"></i> Dashboard analitik lanjutan</li>
+                        <li class="pricing-table-feature"><i class="fas fa-times"></i> Fitur saran produk alternatif</li>
+                    </ul>
+                    <div class="pricing-table-footer">
+                        <a href="#" class="btn">Daftar Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="pricing-table" data-aos="fade-up" data-aos-delay="100">
+                    <div class="popular-badge">Popular</div>
+                    <div class="pricing-table-header">
+                        <h3 class="pricing-table-title">Premium</h3>
+                        <div class="pricing-table-price">Rp29.000<span>/bulan</span></div>
+                        <p class="pricing-table-description">Untuk pengguna serius</p>
+                    </div>
+                    <ul class="pricing-table-features">
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Dashboard lengkap & interaktif</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Prediksi 15+ komoditas semua pasar</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Notifikasi prioritas tak terbatas</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Tips belanja personal & hemat</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Rekomendasi produk alternatif</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Akses penuh ke forum premium</li>
+                    </ul>
+                    <div class="pricing-table-footer">
+                        <a href="#" class="btn btn-accent">Pilih Paket</a>
+                    </div>
+                </div>
+
+                <div class="pricing-table" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-table-header">
+                        <h3 class="pricing-table-title">UMKM</h3>
+                        <div class="pricing-table-price">Rp99.000<span>/bulan</span></div>
+                        <p class="pricing-table-description">Untuk pelaku bisnis</p>
+                    </div>
+                    <ul class="pricing-table-features">
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Semua fitur Premium</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Dashboard HPP & margin bisnis</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Prediksi jangka panjang (3 bulan)</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Laporan analitik bisnis mingguan</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Dukungan prioritas 24/7</li>
+                        <li class="pricing-table-feature"><i class="fas fa-check"></i> Konsultasi strategi bisnis</li>
+                    </ul>
+                    <div class="pricing-table-footer">
+                        <a href="#" class="btn">Hubungi Tim Bisnis</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 5rem;" data-aos="fade-up" data-aos-delay="300">
+                <h3 style="text-align: center; margin-bottom: 2.5rem; color: var(--primary); font-size: 1.8rem;">Business Canvas Model</h3>
+                <table class="bcm-table">
+                    <tr>
+                        <th>Key Partners</th>
+                        <th>Key Activities</th>
+                        <th>Value Proposition</th>
+                        <th>Customer Relationships</th>
+                        <th>Customer Segments</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Komunitas & Koperasi UMKM Makassar</li>
+                                <li>Marketplace API (Tokopedia, Shopee)</li>
+                                <li>Dinas Perdagangan dan Pasar</li>
+                                <li>Komunitas Ibu-Ibu PKK</li>
+                                <li>BMKG</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Pengembangan platform AI</li>
+                                <li>Integrasi data multi-sumber</li>
+                                <li>Pembaruan model prediksi</li>
+                                <li>Pelatihan pengguna</li>
+                                <li>Pengumpulan data harga</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Prediksi kenaikan harga akurat</li>
+                                <li>Alert "Beli Sekarang" tepat waktu</li>
+                                <li>Insight tren produk real-time</li>
+                                <li>Saran waktu belanja optimal</li>
+                                <li>Dashboard analitik bisnis</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Bot asisten belanja cerdas</li>
+                                <li>Komunitas forum diskusi</li>
+                                <li>Laporan prediksi mingguan</li>
+                                <li>Program reward & loyalty</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Ibu rumah tangga (40%)</li>
+                                <li>Pedagang kecil (30%)</li>
+                                <li>UMKM kuliner (20%)</li>
+                                <li>Distributor (10%)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Key Resources</th>
+                        <th colspan="2">Cost Structure</th>
+                        <th colspan="2">Revenue Streams</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Tim pengembang AI/ML</li>
+                                <li>Surveyor di 8 pasar utama</li>
+                                <li>Dataset historis harga</li>
+                                <li>Model prediktif time series</li>
+                                <li>Tim pemasaran</li>
+                            </ul>
+                        </td>
+                        <td colspan="2">
+                            <ul>
+                                <li>Pengembangan teknologi (35%)</li>
+                                <li>Jaringan surveyor (25%)</li>
+                                <li>Marketing & promosi (25%)</li>
+                                <li>Operasional tim (15%)</li>
+                            </ul>
+                        </td>
+                        <td colspan="2">
+                            <ul>
+                                <li>Freemium (akses dasar gratis)</li>
+                                <li>Premium Subscription (Rp29.000/bulan)</li>
+                                <li>Paket UMKM (Rp99.000/bulan)</li>
+                                <li>Iklan kontekstual dari produsen</li>
+                                <li>Monetisasi data & insight pasar</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Pendiri</span>
+                <h2 class="section-title">Tim Kami</h2>
+                <p class="section-description">Para profesional berdedikasi di balik pengembangan dan kesuksesan platform HargaNaik.ID.</p>
+            </div>
+            <div class="team-members">
+                <div class="team-member" data-aos="fade-up">
+                    <div class="team-member-shape"></div>
+                    <div class="team-member-image">
+                        <img src="/api/placeholder/130/130" alt="Ahmad Syarif Hidayatullah">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Ahmad Syarif Hidayatullah</h3>
+                        <div class="team-member-role">UI/UX & Technical Lead</div>
+                        <p class="team-member-description">Bertanggung jawab untuk mockup, flowchart, dan menyusun laporan bagian teknis. Berpengalaman dalam desain produk digital dan sistem AI.</p>
+                        <div class="team-member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member-shape"></div>
+                    <div class="team-member-image">
+                        <img src="/api/placeholder/130/130" alt="Nurul Chaerana S Amin">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Nurul Chaerana S Amin</h3>
+                        <div class="team-member-role">UX Designer</div>
+                        <p class="team-member-description">Bertanggung jawab untuk mockup, flowchart, dan menyusun laporan bagian teknis. Spesialis dalam penelitian pengguna dan desain interaksi.</p>
+                        <div class="team-member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member-shape"></div>
+                    <div class="team-member-image">
+                        <img src="/api/placeholder/130/130" alt="Achmad Septian Mulia">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Achmad Septian Mulia</h3>
+                        <div class="team-member-role">Business Analyst</div>
+                        <p class="team-member-description">Bertanggung jawab untuk Business Canvas Model dan menyusun laporan bagian bisnis dan pengantar. Ahli dalam analisis pasar dan strategi.</p>
+                        <div class="team-member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member-shape"></div>
+                    <div class="team-member-image">
+                        <img src="/api/placeholder/130/130" alt="Gasali">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Gasali</h3>
+                        <div class="team-member-role">Visual Designer</div>
+                        <p class="team-member-description">Bertanggung jawab untuk PPT desain visual dan Business Canvas Model. Memiliki keahlian dalam identitas brand dan desain grafis.</p>
+                        <div class="team-member-social">
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-member-shape"></div>
+                    <div class="team-member-image">
+                        <img src="/api/placeholder/130/130" alt="Muh. Al Ghifari Rinawan Siswanto">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Muh. Al Ghifari R.S.</h3>
+                        <div class="team-member-role">Business Development</div>
+                        <p class="team-member-description">Bertanggung jawab untuk menyusun laporan bagian bisnis dan pengantar. Fokus pada kemitraan strategis dan pengembangan pasar.</p>
+                        <div class="team-member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="footer-title">HargaNaik.ID</h3>
+                    <p>Platform prediksi harga bahan pokok berbasis data science dan AI untuk membantu warga dan UMKM mengoptimalkan belanja dan bisnis mereka.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li class="footer-link"><a href="#features"><i class="fas fa-chevron-right"></i> Fitur</a></li>
+                        <li class="footer-link"><a href="#problems"><i class="fas fa-chevron-right"></i> Masalah</a></li>
+                        <li class="footer-link"><a href="#solutions"><i class="fas fa-chevron-right"></i> Solusi</a></li>
+                        <li class="footer-link"><a href="#app"><i class="fas fa-chevron-right"></i> Aplikasi</a></li>
+                        <li class="footer-link"><a href="#team"><i class="fas fa-chevron-right"></i> Tim</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Kontak</h3>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <p>Jl. Perintis Kemerdekaan KM. 10, Makassar</p>
+                            <p>Sulawesi Selatan, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p>info@harganaik.id</p>
+                            <p>support@harganaik.id</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <p>+62 812 3456 7890</p>
+                            <p>+62 811 2345 6789</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Dapatkan update terbaru dan tips belanja hemat langsung ke email Anda.</p>
+                    <div class="footer-newsletter">
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Email Anda">
+                            <button type="submit" class="newsletter-button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HargaNaik.ID. All Rights Reserved. | Kelompok 11 - Simulasi Bisnis Digital</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
