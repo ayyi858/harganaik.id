@@ -1926,3 +1926,323 @@ strong {
 /* ======================================
    18. PRELOADER
 ====================================== */
+
+/* Flowchart Styles */
+.flowchart-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.flowchart-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.flowchart-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+}
+
+.flowchart-box {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition);
+}
+
+.flowchart-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-arrow {
+    margin: 1rem 0;
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.flowchart-detailed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.flowchart-details-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+    border-top: 4px solid var(--secondary);
+}
+
+.flowchart-details-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-details-item h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(15, 76, 130, 0.1);
+    padding-bottom: 0.8rem;
+}
+
+.flowchart-details-item p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.flowchart-data-flow {
+    margin-top: 5rem;
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-data-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+    position: relative;
+}
+
+.flowchart-data-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.flowchart-data-diagram {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.data-flow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background-color: #f8fafc;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px dashed rgba(15, 76, 130, 0.2);
+}
+
+.data-flow-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    min-width: 180px;
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+}
+
+.data-flow-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.data-flow-item h4 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.data-flow-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.data-flow-item ul li {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.data-flow-arrow {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+    .data-flow-container {
+        flex-direction: column;
+    }
+    
+    .data-flow-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .data-flow-item {
+        width: 100%;
+    }
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-spinner {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 5px solid var(--accent);
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.preloader-text {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Adjustments for hero section */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.hero-stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+}
+
+.hero-image {
+    max-width: 500px;
+    margin: 3rem auto 0;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    transition: all 0.6s ease;
+}
+
+.hero-image img:hover {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 992px) {
+    .hero .container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .hero-content {
+        text-align: left;
+        width: 55%;
+    }
+    
+    .hero-buttons {
+        justify-content: flex-start;
+    }
+    
+    .hero-image {
+        width: 45%;
+        margin: 0;
+    }
+    
+    .hero-stats {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-stats {
+        flex-wrap: wrap;
+    }
+}
