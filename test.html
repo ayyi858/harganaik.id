@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HargaNaik.ID - Prediksi Harga Bahan Pokok</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4CAF50',secondary:'#FF5722'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .app-container {
+            max-width: 430px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        .status-bar {
+            height: 44px;
+            background-color: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            height: 56px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+        }
+        .nav-item.active {
+            color: #4CAF50;
+        }
+        .nav-item.inactive {
+            color: #9CA3AF;
+        }
+        .price-card {
+            height: 100px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .alert-box {
+            height: 80px;
+            border-radius: 12px;
+            background-color: #FFF8E1;
+            border-left: 4px solid #FFC107;
+        }
+        .market-card {
+            height: 96px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .tips-card {
+            min-height: 120px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .notification-card {
+            min-height: 72px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .notification-urgent {
+            border-left: 4px solid #F44336;
+        }
+        .notification-warning {
+            border-left: 4px solid #FFC107;
+        }
+        .bottom-nav {
+            height: 56px;
+            background-color: white;
+            border-top: 1px solid #E0E0E0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        .search-bar {
+            height: 48px;
+            border-radius: 24px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #E0E0E0;
+            border-radius: 2px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #9CA3AF;
+            border-radius: 4px;
+            position: relative;
+        }
+        .custom-checkbox.checked {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .custom-checkbox.checked::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-switch {
+            width: 44px;
+            height: 24px;
+            background-color: #E0E0E0;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .custom-switch.active {
+            background-color: #4CAF50;
+        }
+        .custom-switch::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .custom-switch.active::after {
+            transform: translateX(20px);
+        }
+        .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #9CA3AF;
+            border-radius: 50%;
+            position: relative;
+        }
+        .custom-radio.checked {
+            border-color: #4CAF50;
+        }
+        .custom-radio.checked::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+        }
+        .content-area {
+            padding-bottom: 56px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Status Bar -->
+        <div class="status-bar flex items-center justify-between px-4">
+            <div class="text-sm">01 Mei 2025</div>
+            <div class="flex items-center space-x-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                    <i class="ri-signal-wifi-line"></i>
+                </div>
+                <div class="w-4 h-4 flex items-center justify-center">
+                    <i class="ri-battery-line"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header flex items-center justify-between px-4">
+            <div class="font-poppins font-bold text-lg">HargaNaik.ID</div>
+            <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full">
+                <i class="ri-notification-3-line"></i>
+            </div>
+        </div>
+
+        <!-- Main Content - Home Page -->
+        <div class="content-area">
+            <div id="beranda" class="px-4 py-4">
+                <h1 class="font-poppins font-semibold text-xl mb-4">Selamat Pagi, Ibu Siti</h1>
+                
+                <!-- Price Trend Graph -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="font-poppins font-medium text-base">Tren Harga Minggu Ini</h2>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <span>Lihat Semua</span>
+                            <div class="w-4 h-4 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="priceChart" style="width: 100%; height: 220px;"></div>
+                </div>
+                
+                <!-- Current Prices Grid -->
+                <h2 class="font-poppins font-medium text-base mb-3">Harga Terkini</h2>
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="price-card bg-white p-3 flex flex-col justify-between">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-red-50 rounded-full mr-2">
+                                <i class="ri-fire-line text-red-500"></i>
+                            </div>
+                            <span class="text-sm">Cabai Rawit</span>
+                        </div>
+                        <div>
+                            <div class="font-poppins font-semibold text-base">Rp 45.000/kg</div>
+                            <div class="text-xs text-red-500 flex items-center">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-up-s-line"></i>
+                                </div>
+                                <span>12% dari kemarin</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-card bg-white p-3 flex flex-col justify-between">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-yellow-50 rounded-full mr-2">
+                                <i class="ri-seedling-line text-yellow-600"></i>
+                            </div>
+                            <span class="text-sm">Bawang Merah</span>
+                        </div>
+                        <div>
+                            <div class="font-poppins font-semibold text-base">Rp 32.000/kg</div>
+                            <div class="text-xs text-green-500 flex items-center">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                                <span>3% dari kemarin</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-card bg-white p-3 flex flex-col justify-between">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-amber-50 rounded-full mr-2">
+                                <i class="ri-drop-line text-amber-500"></i>
+                            </div>
+                            <span class="text-sm">Minyak Goreng</span>
+                        </div>
+                        <div>
+                            <div class="font-poppins font-semibold text-base">Rp 18.500/L</div>
+                            <div class="text-xs text-gray-500 flex items-center">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-subtract-line"></i>
+                                </div>
+                                <span>Stabil</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-card bg-white p-3 flex flex-col justify-between">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-orange-50 rounded-full mr-2">
+                                <i class="ri-egg-line text-orange-500"></i>
+                            </div>
+                            <span class="text-sm">Telur Ayam</span>
+                        </div>
+                        <div>
+                            <div class="font-poppins font-semibold text-base">Rp 26.000/kg</div>
+                            <div class="text-xs text-red-500 flex items-center">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-up-s-line"></i>
+                                </div>
+                                <span>5% dari kemarin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alert Box -->
+                <div class="alert-box p-4 flex items-center mb-4">
+                    <div class="w-10 h-10 flex items-center justify-center bg-amber-100 rounded-full mr-3">
+                        <i class="ri-alarm-warning-line text-amber-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm">Perhatian!</h3>
+                        <p class="text-sm">Cabai rawit diprediksi akan naik 12% besok. Belanja hari ini untuk menghemat.</p>
+                    </div>
+                </div>
+                
+                <!-- Recommended Markets -->
+                <h2 class="font-poppins font-medium text-base mb-3">Pasar Terdekat</h2>
+                <div class="market-card bg-white p-3 flex items-center mb-3">
+                    <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                        <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20busy%20market%20with%20fresh%20vegetables%20and%20fruits%2C%20morning%20atmosphere&width=160&height=160&seq=1&orientation=squarish" alt="Pasar Terong" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium">Pasar Terong</h3>
+                        <div class="text-xs text-gray-500 mb-1">1.2 km dari lokasi Anda</div>
+                        <div class="flex items-center">
+                            <div class="flex">
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                    <i class="ri-star-line"></i>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(128)</span>
+                        </div>
+                    </div>
+                    <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                        <i class="ri-map-pin-line text-primary"></i>
+                    </button>
+                </div>
+                
+                <div class="market-card bg-white p-3 flex items-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                        <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20indoor%20market%20with%20various%20stalls%2C%20busy%20shoppers&width=160&height=160&seq=2&orientation=squarish" alt="Pasar Sentral" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium">Pasar Sentral</h3>
+                        <div class="text-xs text-gray-500 mb-1">2.5 km dari lokasi Anda</div>
+                        <div class="flex items-center">
+                            <div class="flex">
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                    <i class="ri-star-half-line"></i>
+                                </div>
+                                <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                    <i class="ri-star-line"></i>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(96)</span>
+                        </div>
+                    </div>
+                    <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                        <i class="ri-map-pin-line text-primary"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pasar Terdekat Page -->
+            <div id="pasar" class="hidden">
+                <div class="relative w-full h-[40vh] overflow-hidden">
+                    <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Peta" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 right-4">
+                        <div class="search-bar bg-white shadow-sm flex items-center px-4">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2">
+                                <i class="ri-search-line text-gray-400"></i>
+                            </div>
+                            <input type="text" placeholder="Cari pasar terdekat" class="flex-1 h-full border-none focus:outline-none text-sm">
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md !rounded-button">
+                            <i class="ri-gps-line text-primary"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-poppins font-medium text-base">Pasar di Sekitar Anda</h2>
+                        <div class="relative">
+                            <button class="flex items-center text-sm border border-gray-200 rounded px-3 py-1 !rounded-button">
+                                <span>Jarak</span>
+                                <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="market-card bg-white p-3 flex items-center">
+                            <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20busy%20market%20with%20fresh%20vegetables%20and%20fruits%2C%20morning%20atmosphere&width=160&height=160&seq=3&orientation=squarish" alt="Pasar Terong" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Pasar Terong</h3>
+                                <div class="text-xs text-gray-500 mb-1">1.2 km dari lokasi Anda</div>
+                                <div class="flex items-center">
+                                    <div class="flex">
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">(128)</span>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="market-card bg-white p-3 flex items-center">
+                            <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20indoor%20market%20with%20various%20stalls%2C%20busy%20shoppers&width=160&height=160&seq=4&orientation=squarish" alt="Pasar Sentral" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Pasar Sentral</h3>
+                                <div class="text-xs text-gray-500 mb-1">2.5 km dari lokasi Anda</div>
+                                <div class="flex items-center">
+                                    <div class="flex">
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-half-line"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">(96)</span>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="market-card bg-white p-3 flex items-center">
+                            <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20outdoor%20market%20with%20tents%2C%20fresh%20produce%20display&width=160&height=160&seq=5&orientation=squarish" alt="Pasar Pa'baeng-baeng" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Pasar Pa'baeng-baeng</h3>
+                                <div class="text-xs text-gray-500 mb-1">3.8 km dari lokasi Anda</div>
+                                <div class="flex items-center">
+                                    <div class="flex">
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">(72)</span>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="market-card bg-white p-3 flex items-center">
+                            <div class="w-16 h-16 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=traditional%20market%20in%20Makassar%20Indonesia%2C%20clean%20modern%20market%20building%2C%20organized%20stalls&width=160&height=160&seq=6&orientation=squarish" alt="Pasar Daya" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Pasar Daya</h3>
+                                <div class="text-xs text-gray-500 mb-1">5.2 km dari lokasi Anda</div>
+                                <div class="flex items-center">
+                                    <div class="flex">
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-yellow-400">
+                                            <i class="ri-star-half-line"></i>
+                                        </div>
+                                        <div class="w-4 h-4 flex items-center justify-center text-gray-300">
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">(85)</span>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full !rounded-button">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tips Hemat Page -->
+            <div id="tips" class="hidden p-4">
+                <h1 class="font-poppins font-semibold text-xl mb-4">Tips Hemat Belanja</h1>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h2 class="font-poppins font-medium text-base">Filter Tips</h2>
+                    </div>
+                    <div class="flex space-x-2 overflow-x-auto pb-2">
+                        <button class="px-3 py-1 bg-primary text-white rounded-full text-sm whitespace-nowrap !rounded-button">Semua</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Cabai</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Bawang</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Minyak</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Telur</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Beras</button>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="tips-card bg-white p-4">
+                        <div class="flex mb-3">
+                            <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=red%20bell%20peppers%20and%20red%20chili%20peppers%20side%20by%20side%20on%20a%20white%20background%2C%20showing%20size%20comparison%2C%20professional%20food%20photography&width=200&height=200&seq=7&orientation=squarish" alt="Cabai dan Paprika" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-poppins font-medium text-base mb-1">Ganti Cabai Rawit dengan Paprika Lokal</h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">Paprika lokal bisa menjadi alternatif yang lebih ekonomis saat harga cabai rawit sedang tinggi.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-500">01 Mei 2025</div>
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-sm !rounded-button">Selengkapnya</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tips-card bg-white p-4">
+                        <div class="flex mb-3">
+                            <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=bulk%20buying%20of%20rice%20in%20large%20sacks%20at%20traditional%20Indonesian%20market%2C%20showing%20price%20comparison%2C%20professional%20photography&width=200&height=200&seq=8&orientation=squarish" alt="Beli Beras Karung" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-poppins font-medium text-base mb-1">Beli Beras dalam Jumlah Besar</h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">Membeli beras dalam karung bisa menghemat hingga 15% dibandingkan membeli kemasan kecil.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-500">30 April 2025</div>
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-sm !rounded-button">Selengkapnya</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tips-card bg-white p-4">
+                        <div class="flex mb-3">
+                            <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=homemade%20dried%20shallots%20and%20garlic%20in%20glass%20jars%2C%20Indonesian%20kitchen%20spices%20preservation%2C%20professional%20food%20photography&width=200&height=200&seq=9&orientation=squarish" alt="Bawang Kering" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-poppins font-medium text-base mb-1">Membuat Bawang Kering Sendiri</h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">Beli bawang saat harga murah, keringkan dan simpan untuk digunakan saat harga naik.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-500">28 April 2025</div>
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-sm !rounded-button">Selengkapnya</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tips-card bg-white p-4">
+                        <div class="flex mb-3">
+                            <div class="w-20 h-20 bg-gray-100 rounded overflow-hidden mr-3">
+                                <img src="https://readdy.ai/api/search-image?query=Indonesian%20community%20group%20buying%20vegetables%20together%2C%20sharing%20bulk%20purchase%2C%20professional%20photography&width=200&height=200&seq=10&orientation=squarish" alt="Belanja Kelompok" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-poppins font-medium text-base mb-1">Belanja Bersama dengan Tetangga</h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">Membentuk kelompok belanja bisa mendapatkan harga grosir yang lebih murah.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-500">25 April 2025</div>
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-sm !rounded-button">Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prediksi Page -->
+            <div id="prediksi" class="hidden p-4">
+                <h1 class="font-poppins font-semibold text-xl mb-4">Prediksi Harga</h1>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="font-poppins font-medium text-base">Pilih Komoditas</h2>
+                    </div>
+                    <div class="flex space-x-2 overflow-x-auto pb-2">
+                        <button class="px-3 py-1 bg-primary text-white rounded-full text-sm whitespace-nowrap !rounded-button">Cabai Rawit</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Bawang Merah</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Minyak Goreng</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Telur Ayam</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap !rounded-button">Beras</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="font-poppins font-medium text-base">Prediksi 7 Hari Kedepan</h2>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <span>Akurasi: 92%</span>
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-information-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="predictionChart" style="width: 100%; height: 220px;"></div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h2 class="font-poppins font-medium text-base mb-3">Faktor Pengaruh Harga</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-blue-50 rounded-full mr-3">
+                                <i class="ri-cloud-line text-blue-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">Cuaca</span>
+                                    <span class="text-sm text-red-500">+8%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-green-50 rounded-full mr-3">
+                                <i class="ri-plant-line text-green-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">Panen</span>
+                                    <span class="text-sm text-red-500">+3%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-yellow-50 rounded-full mr-3">
+                                <i class="ri-gas-station-line text-yellow-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">BBM</span>
+                                    <span class="text-sm text-red-500">+1%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-box p-4 flex items-center">
+                    <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-3">
+                        <i class="ri-lightbulb-line text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm">Rekomendasi</h3>
+                        <p class="text-sm">Belilah cabai rawit hari ini, karena diprediksi akan naik 12% dalam 2 hari kedepan.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notification Page -->
+            <div id="notifikasi" class="hidden p-4">
+                <div class="flex items-center justify-between mb-4">
+                    <h1 class="font-poppins font-semibold text-xl">Notifikasi</h1>
+                    <button class="text-sm text-primary">Tandai Semua Dibaca</button>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="notification-card notification-urgent bg-white p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-medium text-sm">Peringatan Kenaikan Harga</h3>
+                            <div class="text-xs text-gray-500">1 jam yang lalu</div>
+                        </div>
+                        <p class="text-sm mb-2">Harga cabai rawit diprediksi akan naik 12% besok. Belanja hari ini untuk menghemat.</p>
+                        <div class="flex justify-end">
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-xs !rounded-button">Lihat Detail</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-card notification-warning bg-white p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-medium text-sm">Diskon di Pasar Terong</h3>
+                            <div class="text-xs text-gray-500">3 jam yang lalu</div>
+                        </div>
+                        <p class="text-sm mb-2">Pedagang di Pasar Terong memberikan diskon 10% untuk pembelian bawang merah di atas 2kg hari ini.</p>
+                        <div class="flex justify-end">
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-xs !rounded-button">Lihat Detail</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-card bg-white p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-medium text-sm">Tips Hemat Baru</h3>
+                            <div class="text-xs text-gray-500">Kemarin</div>
+                        </div>
+                        <p class="text-sm mb-2">Kami telah menambahkan tips baru tentang cara menghemat pengeluaran untuk bahan pokok.</p>
+                        <div class="flex justify-end">
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-xs !rounded-button">Baca Sekarang</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-card bg-white p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-medium text-sm">Prediksi Harga Diperbarui</h3>
+                            <div class="text-xs text-gray-500">2 hari yang lalu</div>
+                        </div>
+                        <p class="text-sm mb-2">Prediksi harga untuk minggu ini telah diperbarui. Lihat perubahan terbaru.</p>
+                        <div class="flex justify-end">
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-xs !rounded-button">Lihat Prediksi</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-card bg-white p-4">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-medium text-sm">Pasar Baru Ditambahkan</h3>
+                            <div class="text-xs text-gray-500">3 hari yang lalu</div>
+                        </div>
+                        <p class="text-sm mb-2">Pasar Butung telah ditambahkan ke daftar pasar terdekat. Cek harga-harga terbaru di sana.</p>
+                        <div class="flex justify-end">
+                            <button class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded text-xs !rounded-button">Lihat Pasar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account Page -->
+            <div id="akun" class="hidden p-4">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full overflow-hidden mr-4">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20Indonesian%20middle-aged%20woman%2C%20friendly%20smile%2C%20simple%20background%2C%20headshot&width=160&height=160&seq=11&orientation=squarish" alt="Profil" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div>
+                        <h2 class="font-poppins font-semibold text-lg">Ibu Siti Rahayu</h2>
+                        <p class="text-sm text-gray-500">Makassar, Sulawesi Selatan</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h2 class="font-poppins font-medium text-base mb-3">Pengaturan Akun</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-user-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Edit Profil</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-map-pin-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Lokasi Saya</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-notification-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Notifikasi</span>
+                            </div>
+                            <div class="custom-switch active" id="notificationSwitch"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-moon-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Mode Gelap</span>
+                            </div>
+                            <div class="custom-switch" id="darkModeSwitch"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h2 class="font-poppins font-medium text-base mb-3">Preferensi</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-store-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Pasar Favorit</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-shopping-basket-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Komoditas Pantauan</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h2 class="font-poppins font-medium text-base mb-3">Lainnya</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-question-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Bantuan</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-information-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Tentang Aplikasi</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-3">
+                                    <i class="ri-share-line text-gray-600"></i>
+                                </div>
+                                <span class="text-sm">Bagikan Aplikasi</span>
+                            </div>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-red-500">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center bg-red-50 rounded-full mr-3">
+                                    <i class="ri-logout-box-line text-red-500"></i>
+                                </div>
+                                <span class="text-sm">Keluar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center text-xs text-gray-500 mt-6 mb-20">
+                    <p>HargaNaik.ID v1.0.0</p>
+                    <p>© 2025 HargaNaik.ID. Semua hak dilindungi.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav fixed bottom-0 left-0 right-0 flex justify-between px-2 z-10 max-w-[430px] mx-auto">
+            <div class="nav-item active" data-target="beranda">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-home-5-fill"></i>
+                </div>
+                <span class="text-xs mt-1">Beranda</span>
+            </div>
+            <div class="nav-item inactive" data-target="prediksi">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-line-chart-line"></i>
+                </div>
+                <span class="text-xs mt-1">Prediksi</span>
+            </div>
+            <div class="nav-item inactive" data-target="pasar">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-store-2-line"></i>
+                </div>
+                <span class="text-xs mt-1">Pasar</span>
+            </div>
+            <div class="nav-item inactive" data-target="tips">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-lightbulb-line"></i>
+                </div>
+                <span class="text-xs mt-1">Tips</span>
+            </div>
+            <div class="nav-item inactive" data-target="akun">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-user-line"></i>
+                </div>
+                <span class="text-xs mt-1">Akun</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize price chart
+            const priceChart = echarts.init(document.getElementById('priceChart'));
+            const priceOption = {
+                animation: false,
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    borderColor: '#E0E0E0',
+                    textStyle: {
+                        color: '#1f2937'
+                    }
+                },
+                grid: {
+                    top: 10,
+                    right: 10,
+                    bottom: 20,
+                    left: 50
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['25/04', '26/04', '27/04', '28/04', '29/04', '30/04', '01/05'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#E0E0E0'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#1f2937'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#1f2937'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#E0E0E0',
+                            type: 'dashed'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: 'Cabai Rawit',
+                        type: 'line',
+                        data: [38000, 37500, 38500, 40000, 41500, 43000, 45000],
+                        smooth: true,
+                        symbol: 'none',
+                        lineStyle: {
+                            color: 'rgba(87, 181, 231, 1)'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: 'rgba(87, 181, 231, 0.2)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(87, 181, 231, 0.05)'
+                                }
+                            ])
+                        }
+                    },
+                    {
+                        name: 'Bawang Merah',
+                        type: 'line',
+                        data: [35000, 34000, 33500, 33000, 32500, 33000, 32000],
+                        smooth: true,
+                        symbol: 'none',
+                        lineStyle: {
+                            color: 'rgba(141, 211, 199, 1)'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                {
+                                    offset: 0,
+                                    color: 'rgba(141, 211, 199, 0.2)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(141, 211, 199, 0.05)'
+                                }
+                            ])
+                        }
+                    }
+                ]
+            };
+            priceChart.setOption(priceOption);
+            
+            // Initialize prediction chart if page is loaded
+            const predictionChartEl = document.getElementById('predictionChart');
+            if (predictionChartEl) {
+                const predictionChart = echarts.init(predictionChartEl);
+                const predictionOption = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: '#E0E0E0',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        top: 10,
+                        right: 10,
+                        bottom: 20,
+                        left: 50
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['01/05', '02/05', '03/05', '04/05', '05/05', '06/05', '07/05'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#E0E0E0'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#E0E0E0',
+                                type: 'dashed'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Harga Aktual',
+                            type: 'line',
+                            data: [45000, null, null, null, null, null, null],
+                            smooth: true,
+                            symbol: 'none',
+                            lineStyle: {
+                                color: 'rgba(87, 181, 231, 1)'
+                            }
+                        },
+                        {
+                            name: 'Prediksi',
+                            type: 'line',
+                            data: [45000, 48500, 50000, 50500, 49500, 48000, 47000],
+                            smooth: true,
+                            symbol: 'none',
+                            lineStyle: {
+                                color: 'rgba(251, 191, 114, 1)',
+                                type: 'dashed'
+                            },
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    {
+                                        offset: 0,
+                                        color: 'rgba(251, 191, 114, 0.2)'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(251, 191, 114, 0.05)'
+                                    }
+                                ])
+                            }
+                        }
+                    ]
+                };
+                predictionChart.setOption(predictionOption);
+            }
+            
+            // Navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentPages = document.querySelectorAll('#beranda, #prediksi, #pasar, #tips, #akun, #notifikasi');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Hide all pages
+                    contentPages.forEach(page => {
+                        page.classList.add('hidden');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(target).classList.remove('hidden');
+                    
+                    // Update active state
+                    navItems.forEach(navItem => {
+                        navItem.classList.remove('active');
+                        navItem.classList.add('inactive');
+                        
+                        const icon = navItem.querySelector('i');
+                        if (icon.classList.contains('ri-home-5-fill')) icon.className = 'ri-home-5-line';
+                        if (icon.classList.contains('ri-line-chart-fill')) icon.className = 'ri-line-chart-line';
+                        if (icon.classList.contains('ri-store-2-fill')) icon.className = 'ri-store-2-line';
+                        if (icon.classList.contains('ri-lightbulb-fill')) icon.className = 'ri-lightbulb-line';
+                        if (icon.classList.contains('ri-user-fill')) icon.className = 'ri-user-line';
+                    });
+                    
+                    this.classList.remove('inactive');
+                    this.classList.add('active');
+                    
+                    // Update icon to filled version
+                    const icon = this.querySelector('i');
+                    if (target === 'beranda') icon.className = 'ri-home-5-fill';
+                    if (target === 'prediksi') icon.className = 'ri-line-chart-fill';
+                    if (target === 'pasar') icon.className = 'ri-store-2-fill';
+                    if (target === 'tips') icon.className = 'ri-lightbulb-fill';
+                    if (target === 'akun') icon.className = 'ri-user-fill';
+                    
+                    // Initialize charts if needed
+                    if (target === 'prediksi' && predictionChartEl) {
+                        const predictionChart = echarts.init(predictionChartEl);
+                        predictionChart.setOption(predictionOption);
+                    }
+                });
+            });
+            
+            // Custom switch functionality
+            const switches = document.querySelectorAll('.custom-switch');
+            switches.forEach(switchEl => {
+                switchEl.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Handle window resize for charts
+            window.addEventListener('resize', function() {
+                if (priceChart) {
+                    priceChart.resize();
+                }
+                
+                const predictionChart = echarts.getInstanceByDom(predictionChartEl);
+                if (predictionChart) {
+                    predictionChart.resize();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

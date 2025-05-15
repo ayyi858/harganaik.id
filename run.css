@@ -1,15 +1,15 @@
 /*
- * HargaNaik.ID - Complete CSS Stylesheet
+ * HargaNaik.ID - Premium CSS Stylesheet
  * Author: Team HargaNaik.ID
  * Version: 2.0
- * Description: Stylesheet lengkap untuk website HargaNaik.ID - Platform Prediksi Harga Bahan Pokok
+ * Description: Enhanced stylesheet untuk website HargaNaik.ID
  */
 
 /* ======================================
    1. VARIABLES & RESET
 ====================================== */
 :root {
-    /* Color Variables */
+    /* Color Scheme - Enhanced */
     --primary: #0f4c82;
     --primary-light: #1a73e8;
     --primary-dark: #0a3b68;
@@ -26,6 +26,12 @@
     --success: #2ecc71;
     --warning: #f39c12;
     --info: #3498db;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    --gradient-cta: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     
     /* Border Radius */
     --border-radius-sm: 5px;
@@ -54,6 +60,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
@@ -62,7 +69,16 @@ body {
     background-color: var(--light);
     line-height: 1.6;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+::selection {
+    background-color: var(--primary);
+    color: white;
 }
 
 /* ======================================
@@ -103,20 +119,35 @@ h6 {
 p {
     margin-bottom: 1rem;
     color: #475569;
+    line-height: 1.7;
 }
 
 a {
     color: var(--secondary);
     text-decoration: none;
     transition: all var(--transition);
+    position: relative;
 }
 
 a:hover {
     color: var(--accent);
 }
 
+a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(57, 169, 115, 0.3);
+}
+
 strong {
     font-weight: 600;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 /* ======================================
@@ -144,6 +175,14 @@ strong {
 .section {
     padding: 6rem 0;
     position: relative;
+}
+
+.section:nth-child(odd) {
+    background-color: white;
+}
+
+.section:nth-child(even) {
+    background-color: var(--light);
 }
 
 .section-header {
@@ -218,6 +257,7 @@ strong {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    text-align: center;
 }
 
 .btn::before {
@@ -246,8 +286,14 @@ strong {
     transform: translateY(-1px);
 }
 
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(57, 169, 115, 0.3), 0 5px 15px rgba(57, 169, 115, 0.2);
+}
+
 .btn-primary {
     background-color: var(--primary);
+    background-image: var(--gradient-primary);
     box-shadow: 0 5px 15px rgba(15, 76, 130, 0.2);
 }
 
@@ -255,13 +301,22 @@ strong {
     box-shadow: 0 8px 20px rgba(15, 76, 130, 0.3);
 }
 
+.btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(15, 76, 130, 0.3), 0 5px 15px rgba(15, 76, 130, 0.2);
+}
+
 .btn-accent {
     background-color: var(--accent);
+    background-image: var(--gradient-accent);
     box-shadow: 0 5px 15px rgba(248, 164, 39, 0.2);
 }
 
 .btn-accent:hover {
     box-shadow: 0 8px 20px rgba(248, 164, 39, 0.3);
+}
+
+.btn-accent:focus {
+    box-shadow: 0 0 0 3px rgba(248, 164, 39, 0.3), 0 5px 15px rgba(248, 164, 39, 0.2);
 }
 
 .btn-outline {
@@ -290,7 +345,7 @@ strong {
    5. HEADER & NAVIGATION
 ====================================== */
 .header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: var(--gradient-primary);
     color: white;
     padding: 1rem 0;
     position: fixed;
@@ -317,21 +372,17 @@ strong {
     align-items: center;
 }
 
-.logo img {
-    height: 40px;
-    margin-right: 10px;
-    transition: all var(--transition);
-}
-
-.header.scrolled .logo img {
-    height: 35px;
-}
-
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin: 0;
     color: white;
     transition: all var(--transition);
+    font-weight: 700;
+}
+
+.logo h1 span {
+    color: var(--accent-light);
+    font-weight: 700;
 }
 
 .header.scrolled .logo h1 {
@@ -408,7 +459,7 @@ strong {
 ====================================== */
 .hero {
     padding: 12rem 0 8rem;
-    background: url('/api/placeholder/1200/600') no-repeat center center/cover;
+    background: url('img/hero-bg.jpg') no-repeat center center/cover;
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
@@ -422,7 +473,7 @@ strong {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(15, 76, 130, 0.9) 0%, rgba(26, 115, 232, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(15, 76, 130, 0.95) 0%, rgba(26, 115, 232, 0.85) 100%);
     z-index: 1;
 }
 
@@ -434,13 +485,33 @@ strong {
     margin: 0 auto;
 }
 
+.hero-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    animation: float 5s ease-in-out infinite;
+}
+
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
     color: white;
-    line-height: 1.2;
+    line-height: 1.1;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title span {
+    color: var(--accent-light);
 }
 
 .hero-subtitle {
@@ -450,12 +521,47 @@ strong {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1.4s ease-out;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    animation: fadeInUp 1.6s ease-out;
+}
+
+.hero-stat {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 150px;
+}
+
+.hero-stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
 }
 
 .hero-shape {
@@ -474,7 +580,7 @@ strong {
 }
 
 /* ======================================
-   7. FEATURES SECTION - IMPROVED
+   7. FEATURES SECTION
 ====================================== */
 .features {
     display: grid;
@@ -757,25 +863,8 @@ strong {
 }
 
 /* ======================================
-   9. SOLUTIONS SECTION
+   9. USE CASES SECTION
 ====================================== */
-.solutions {
-    background-color: white;
-    position: relative;
-}
-
-.solutions::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f8a427' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
-    z-index: 0;
-}
-
 .solution-card {
     display: flex;
     margin-bottom: 4rem;
@@ -847,10 +936,17 @@ strong {
 }
 
 .solution-subtitle {
-    color: var(--secondary);
+    color: var(--primary);
     font-size: 1.1rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
+    margin: 1.5rem 0 1rem;
+    font-weight: 600;
+    padding-left: 0.8rem;
+    border-left: 3px solid var(--primary);
+}
+
+.solution-subtitle-alt {
+    color: var(--secondary);
+    border-left-color: var(--secondary);
 }
 
 .solution-description {
@@ -861,7 +957,7 @@ strong {
 
 .solution-features {
     list-style: none;
-    margin-top: 2rem;
+    margin: 0;
 }
 
 .solution-feature {
@@ -876,6 +972,10 @@ strong {
     margin-right: 1rem;
     margin-top: 0.3rem;
     font-size: 0.9rem;
+}
+
+.solution-feature i.fa-times-circle {
+    color: var(--danger);
 }
 
 .solution-feature-text {
@@ -1115,11 +1215,21 @@ strong {
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid #f1f5f9;
+    z-index: 1;
 }
 
 .pricing-table:hover {
     transform: translateY(-15px);
     box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.pricing-table.featured {
+    border-color: var(--secondary-light);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-10px) scale(1.05);
+    z-index: 2;
 }
 
 .pricing-table-header {
@@ -1128,6 +1238,10 @@ strong {
     padding: 3rem 2rem 2rem;
     position: relative;
     overflow: hidden;
+}
+
+.pricing-table.featured .pricing-table-header {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
 }
 
 .pricing-table-header::before {
@@ -1215,75 +1329,187 @@ strong {
 }
 
 /* ======================================
-   13. BUSINESS MODEL & TABLES
+   13. FLOWCHART SECTION
 ====================================== */
-.business-model {
-    background-color: var(--light);
+.flowchart-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.flowchart-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
     position: relative;
-    overflow: hidden;
 }
 
-.business-model::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.flowchart-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
     width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2339a973' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
+    max-width: 800px;
 }
 
-.bcm-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 2rem;
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-}
-
-.bcm-table th, .bcm-table td {
-    border: 1px solid #edf2f7;
-    padding: 1.2rem;
-    text-align: left;
-}
-
-.bcm-table th {
+.flowchart-box {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: white;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
     font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-.bcm-table tr:nth-child(even) {
-    background-color: #f8fafc;
-}
-
-.bcm-table tr:hover {
-    background-color: #f1f5f9;
-}
-
-.bcm-table td {
-    color: #64748b;
-    font-size: 0.95rem;
+    width: 100%;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
     transition: all var(--transition);
 }
 
-.bcm-table td ul {
-    padding-left: 1.5rem;
+.flowchart-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-arrow {
+    margin: 1rem 0;
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.flowchart-detailed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.flowchart-details-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+    border-top: 4px solid var(--secondary);
+}
+
+.flowchart-details-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-details-item h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(15, 76, 130, 0.1);
+    padding-bottom: 0.8rem;
+}
+
+.flowchart-details-item p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.flowchart-details-item.highlight {
+    border-top-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(248, 164, 39, 0.15);
+}
+
+.flowchart-details-item.pulse {
+    animation: pulse 1s ease;
+}
+
+.flowchart-data-flow {
+    margin-top: 5rem;
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.flowchart-data-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+    position: relative;
+}
+
+.flowchart-data-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.flowchart-data-diagram {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.data-flow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background-color: #f8fafc;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px dashed rgba(15, 76, 130, 0.2);
+}
+
+.data-flow-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    min-width: 180px;
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+}
+
+.data-flow-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.data-flow-item h4 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.data-flow-item ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.bcm-table td ul li {
+.data-flow-item ul li {
+    font-size: 0.9rem;
+    color: #64748b;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
-.bcm-table td ul li:last-child {
-    margin-bottom: 0;
+.data-flow-arrow {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin: 0 1rem;
 }
 
 /* ======================================
@@ -1519,11 +1745,113 @@ strong {
 }
 
 /* ======================================
-   15. RESPONSIVE DESIGN
+   15. BACK TO TOP BUTTON
+====================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--gradient-secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================
+   16. ANIMATIONS
+====================================== */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.data-flow-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.data-flow-animate.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flowchart-step {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.flowchart-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ======================================
+   17. RESPONSIVE DESIGN
 ====================================== */
 @media (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+    
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     
     .section-title {
@@ -1540,8 +1868,12 @@ strong {
 }
 
 @media (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+    
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .hero-subtitle {
@@ -1559,9 +1891,21 @@ strong {
     .cta-title {
         font-size: 2.3rem;
     }
+    
+    .features {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .flowchart-detailed {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
     .menu-toggle {
         display: block;
     }
@@ -1606,7 +1950,7 @@ strong {
     }
     
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
     
     .hero-subtitle {
@@ -1616,6 +1960,11 @@ strong {
     .hero-buttons {
         flex-direction: column;
         gap: 1rem;
+    }
+    
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
     
     .section-title {
@@ -1663,11 +2012,28 @@ strong {
     .pricing-table-features {
         padding: 2rem 1.5rem;
     }
+    
+    .data-flow-container {
+        flex-direction: column;
+    }
+    
+    .data-flow-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .data-flow-item {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
+    html {
+        font-size: 13px;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .hero {
@@ -1698,86 +2064,18 @@ strong {
     .footer-grid {
         gap: 2rem;
     }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
 }
 
 /* ======================================
-   16. ANIMATION KEYFRAMES
-====================================== */
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes shake {
-    0%, 100% {transform: translateX(0);}
-    10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
-    20%, 40%, 60%, 80% {transform: translateX(5px);}
-}
-
-/* ======================================
-   17. CUSTOM UTILITY CLASSES
+   18. UTILITY CLASSES
 ====================================== */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
@@ -1923,326 +2221,79 @@ strong {
 .opacity-75 { opacity: 0.75; }
 .opacity-100 { opacity: 1; }
 
-/* ======================================
-   18. PRELOADER
-====================================== */
-
-/* Flowchart Styles */
-.flowchart-container {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.flowchart-diagram {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.flowchart-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-}
-
-.flowchart-box {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: white;
-    padding: 1.5rem 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    font-weight: 600;
-    width: 100%;
-    box-shadow: var(--shadow);
-    position: relative;
-    z-index: 1;
-    transition: all var(--transition);
-}
-
-.flowchart-box:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.flowchart-arrow {
-    margin: 1rem 0;
-    color: var(--secondary);
-    font-size: 1.5rem;
-}
-
-.flowchart-detailed {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.flowchart-details-item {
-    background-color: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: all var(--transition);
-    border-top: 4px solid var(--secondary);
-}
-
-.flowchart-details-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.flowchart-details-item h3 {
-    font-size: 1.3rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(15, 76, 130, 0.1);
-    padding-bottom: 0.8rem;
-}
-
-.flowchart-details-item p {
-    font-size: 0.95rem;
-    color: #64748b;
-    line-height: 1.7;
-}
-
-.flowchart-data-flow {
-    margin-top: 5rem;
-    background-color: white;
-    border-radius: var(--border-radius-lg);
-    padding: 2.5rem;
-    box-shadow: var(--shadow-lg);
-}
-
-.flowchart-data-title {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    font-size: 1.5rem;
-    color: var(--primary);
-    position: relative;
-}
-
-.flowchart-data-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-.flowchart-data-diagram {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.data-flow-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    background-color: #f8fafc;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    border: 1px dashed rgba(15, 76, 130, 0.2);
-}
-
-.data-flow-item {
-    background-color: white;
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    min-width: 180px;
-    box-shadow: var(--shadow);
-    transition: all var(--transition);
-}
-
-.data-flow-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.data-flow-item h4 {
-    font-size: 1rem;
-    color: var(--primary);
-    margin-bottom: 0.8rem;
-    text-align: center;
-    font-weight: 600;
-}
-
-.data-flow-item ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.data-flow-item ul li {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-
-.data-flow-arrow {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin: 0 1rem;
-}
-
-@media (max-width: 768px) {
-    .data-flow-container {
-        flex-direction: column;
-    }
-    
-    .data-flow-arrow {
-        transform: rotate(90deg);
-        margin: 1rem 0;
-    }
-    
-    .data-flow-item {
-        width: 100%;
-    }
-}
-
-/* Preloader */
-.preloader {
+/* The overlay for modal backgrounds */
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Screenshot Modal */
+.screenshot-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.screenshot-modal.active {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
 }
 
-.preloader-hidden {
-    opacity: 0;
-    visibility: hidden;
+.screenshot-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
 }
 
-.preloader-content {
-    text-align: center;
+.screenshot-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    border-radius: 5px;
 }
 
-.preloader-spinner {
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top: 5px solid var(--accent);
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-}
-
-.preloader-text {
+.screenshot-modal-close {
+    position: absolute;
+    top: -30px;
+    right: -30px;
     color: white;
-    font-size: 1.8rem;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Adjustments for hero section */
-.hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-top: 3rem;
-}
-
-.hero-stat {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
-.hero-stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.hero-stat-label {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.hero-badge {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    display: inline-block;
-    backdrop-filter: blur(5px);
-}
-
-.hero-image {
-    max-width: 500px;
-    margin: 3rem auto 0;
-}
-
-.hero-image img {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-    transition: all 0.6s ease;
-}
-
-.hero-image img:hover {
-    transform: translateY(-10px);
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
-}
-
-@media (min-width: 992px) {
-    .hero .container {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-    }
-    
-    .hero-content {
-        text-align: left;
-        width: 55%;
-    }
-    
-    .hero-buttons {
-        justify-content: flex-start;
-    }
-    
-    .hero-image {
-        width: 45%;
-        margin: 0;
-    }
-    
-    .hero-stats {
-        justify-content: flex-start;
-    }
-}
-
-@media (max-width: 992px) {
-    .hero-stats {
-        flex-wrap: wrap;
-    }
+.screenshot-modal-close:hover {
+    transform: scale(1.2);
 }
